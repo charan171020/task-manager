@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -24,11 +24,12 @@ function Dashboard() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  const authHeader = {
+  // ✅ useMemo to avoid dependency warning
+  const authHeader = useMemo(() => ({
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  };
+  }), [token]);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -42,9 +43,12 @@ function Dashboard() {
       setLoading(false);
     };
 
-    if (!token) navigate("/");
-    else fetchTasks();
-  }, [token, navigate]);
+    if (!token) {
+      navigate("/");
+    } else {
+      fetchTasks();
+    }
+  }, [token, navigate, authHeader]); // ✅ FIXED
 
   const addTask = async () => {
     if (!newTask.trim()) return toast.error("Enter a task");
@@ -162,16 +166,21 @@ function Dashboard() {
                     <span className={task.completed ? "done" : ""}>
                       {task.title}
                     </span>
-                    <button onClick={() => {
-                      setEditTaskId(task._id);
-                      setEditText(task.title);
-                    }}>
+                    <button
+                      onClick={() => {
+                        setEditTaskId(task._id);
+                        setEditText(task.title);
+                      }}
+                    >
                       <FaEdit />
                     </button>
                   </>
                 )}
 
-                <button className="delete" onClick={() => deleteTask(task._id)}>
+                <button
+                  className="delete"
+                  onClick={() => deleteTask(task._id)}
+                >
                   <FaTrash />
                 </button>
               </div>
