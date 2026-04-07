@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* LAYOUT */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #1e1e2f;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 30px;
+  background: #f4f6fb;
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+/* INPUT */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.input-group button {
+  padding: 10px 15px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* TASK GRID */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* TASK CARD */
+.task-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+.task-card button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* LOADER */
+.loader {
+  border: 4px solid #eee;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty {
+  text-align: center;
+  color: gray;
+}
