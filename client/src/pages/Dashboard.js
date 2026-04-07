@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import "../styles/Dashboard.css";
 
-const API = "http://localhost:5000/api/tasks";
+const API = "https://task-manager-l102.onrender.com/api/tasks";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
