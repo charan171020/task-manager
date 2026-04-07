@@ -8,13 +8,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-const cors = require("cors");
-
 app.use(
   cors({
-    origin: "*", // temporary fix (fastest)
+    origin: "*", // allow all (for now)
   })
 );
+
 app.use(express.json());
 
 // Routes
@@ -32,4 +31,6 @@ mongoose
 
 // Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);

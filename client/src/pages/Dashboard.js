@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import "../styles/Dashboard.css";
 
-const BASE_URL = "https://task-manager-1102.onrender.com";
+const BASE_URL ="http://localhost:5000";
 const API = `${BASE_URL}/api/tasks`;
 
 function Dashboard() {

@@ -68,3 +68,34 @@
 .login-card button:hover {
   transform: scale(1.05);
 }
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .input-group button {
+    width: 100%;
+  }
+}
