@@ -24,7 +24,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  // ✅ useMemo to avoid dependency warning
+  // ✅ FIX: memoized authHeader (prevents infinite loop + removes warning)
   const authHeader = useMemo(() => ({
     headers: {
       Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ function Dashboard() {
     } else {
       fetchTasks();
     }
-  }, [token, navigate, authHeader]); // ✅ FIXED
+  }, [token, navigate, authHeader]); // ✅ FIXED dependency
 
   const addTask = async () => {
     if (!newTask.trim()) return toast.error("Enter a task");
